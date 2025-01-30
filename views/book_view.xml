@@ -1,0 +1,45 @@
+<odoo>
+    
+        <record id="view_book_form" model="ir.ui.view">
+            <field name="name">acs.book.form</field>
+            <field name="model">acs.book</field>
+            <field name="arch" type="xml">
+                <form string="Book">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="language"/>
+                            <field name="description"/>
+                            <field name="publisher"/>
+                            <field name="category"/>
+                            <field name="author_id"/>
+
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_book_list" model="ir.ui.view">
+            <field name="name">acs.book.list</field>
+            <field name="model">acs.book</field>
+            <field name="type">list</field> 
+            <field name="arch" type="xml">
+                <list string="Book">
+                    <field name="name"/>
+                    <field name="publisher"/>
+                    <field name="category"/>
+                </list>
+            </field>
+        </record>
+
+        <record id="action_books" model="ir.actions.act_window">
+            <field name="name">Books</field>
+            <field name="res_model">acs.book</field>
+            <field name="view_mode">list,form</field>
+            <field name="view_id" ref="view_book_list"/>
+        </record>
+
+       
+</odoo>
+

@@ -1,0 +1,23 @@
+<odoo>
+    <record id="view_staff_list" model="ir.ui.view">
+        <field name="name">acs.staff.list</field>
+        <field name="model">acs.staff</field>
+        <field name="arch" type="xml">
+            <list string="Staff List">
+                <field name="staff_id"/>
+                <field name="name"/>
+                <field name="position"/> 
+                <field name="emailid"/>
+                <field name="contactno"/>
+                <field name="dob"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_staff" model="ir.actions.act_window">
+        <field name="name">Staff</field>
+        <field name="res_model">acs.staff</field>
+        <field name="view_mode">list,form</field> 
+        <field name="view_id" ref="view_staff_list"/>
+    </record>
+</odoo>
