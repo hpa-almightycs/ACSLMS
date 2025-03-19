@@ -1,0 +1,138 @@
+<odoo>
+    <record id="view_bookstore_list" model="ir.ui.view">
+        <field name="name">acs.bookstore.list</field>
+        <field name="model">acs.bookstore</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="bookstore_seq" />
+                <field name="customer_name" />
+            </list>
+        </field>
+    </record>
+
+    <record id="view_bookstore_form" model="ir.ui.view">
+        <field name="name">acs.bookstore.form</field>
+        <field name="model">acs.bookstore</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div style="text-align:center">
+                        <button name="action_view_total_payment" string="Total Invoices"
+                            type="object">
+                            <div class="o_stat_info">
+                                <span class="o_stat_value">
+                                    <field name="total_payment" />
+                                </span>
+                                <span class="o_stat_text">Invoiced</span>
+                            </div>
+                        </button>
+                    </div>
+
+                    <button name="payment" type="object" string="Payment" class="oe_highlight" />
+                    <br></br>
+                    <br></br>
+                    <group>
+                        <h1>
+                            <field name="bookstore_seq" readonly="True" />
+                        </h1>
+                        <field name="customer_name" />
+                        <field name="book_order_lines">
+                            <list editable="bottom">
+                                <field name="book_product" />
+                                <field name="price_line" />
+                                <field name="quantity_line" />
+                                <field name="total_price_line" readonly="1" />
+
+                            </list>
+                        </field>
+
+                        <field name="total_price" />
+                    </group>
+
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="view_bookstore_kanban" model="ir.ui.view">
+        <field name="name">acs.bookstore.kanban</field>
+        <field name="model">acs.bookstore</field>
+        <field name="arch" type="xml">
+            <kanban string="Bookstore">
+                <field name="customer_name" />
+
+
+                <templates>
+                    <t t-name="card">
+                        <div t-attf-class="oe_kanban_card oe_kanban_state_#{record.state}">
+                            <div class="oe_kanban_details">
+                                <strong>
+                                    <field name="customer_name" />
+                                    <br></br>
+
+                                </strong>
+                                <div>
+                                    <field name="total_price" />
+                                </div>
+
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="view_bookstore_graph" model="ir.ui.view">
+        <field name="name">acs.bookstore.graph</field>
+        <field name="model">acs.bookstore</field>
+        <field name="arch" type="xml">
+            <graph string="Bookstore">
+                <field name="customer_name" type="row" />
+            </graph>
+        </field>
+    </record>
+
+    <record id="view_bookstore_pivot" model="ir.ui.view">
+        <field name="name">acs.bookstore.pivot</field>
+        <field name="model">acs.bookstore</field>
+        <field name="arch" type="xml">
+            <pivot string="Bookstore's Pivot">
+                <field name="customer_name" />
+
+            </pivot>
+        </field>
+    </record>
+
+    <record id="view_bookstore_calendar" model="ir.ui.view">
+        <field name="name">acs.bookstore.calendar</field>
+        <field name="model">acs.bookstore</field>
+        <field name="priority" eval="2" />
+        <field name="arch" type="xml">
+            <calendar string="Bookstore Calendar" date_start="customer_name">
+                <field name="customer_name" />
+
+            </calendar>
+        </field>
+    </record>
+
+    <record id="view_bookstore_search" model="ir.ui.view">
+        <field name="name">acs.bookstore.search</field>
+        <field name="model">acs.bookstore</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="customer_name" />
+                <field name="book_product" />
+            </search>
+        </field>
+    </record>
+
+
+    <record id="action_acs_bookstore" model="ir.actions.act_window">
+        <field name="name">Bookstore</field>
+        <field name="res_model">acs.bookstore</field>
+        <field name="view_mode">list,form,kanban,graph,pivot,calendar</field>
+    </record>
+</odoo>

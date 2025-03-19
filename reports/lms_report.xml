@@ -1,0 +1,70 @@
+<odoo>
+   <template id="bookstore_report">
+      <t t-call="web.html_container">
+         <t t-call="web.external_layout">
+            <div class="page">
+               <h1 style="text-align: center">
+                  <b>Bookstore Order Report</b>
+               </h1>
+
+               <div style="text-align: left">
+                  <strong>Report Date:</strong>
+                  <span t-field="doc.today_date" />
+               </div>
+
+               <div style="text-align: left">
+                  <strong>Customer Name:</strong>
+                  <span t-field="doc.customer_name" />
+               </div>
+
+               <table class="table table-bordered">
+                  <thead>
+                     <tr>
+                        <th>Book</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total Price</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <t t-foreach="doc.book_order_lines" t-as="line">
+                        <tr>
+                           <td><span t-field="line.book_product.name" /></td>
+                           <td><span t-field="line.price_line" /></td>
+                           <td><span t-field="line.quantity_line" /></td>
+                           <td><span t-field="line.total_price_line" /></td>
+                        </tr>
+                     </t>
+                  </tbody>
+               </table>
+
+               <div style="text-align: right">
+                  <strong>Total Order Price:</strong>
+                  <span t-field="doc.total_price" />
+               </div>
+
+               
+            </div>
+         </t>
+      </t>
+   </template>
+
+   <template id="acs_bookstore_report">
+      <t t-call="web.html_container">
+         <t t-foreach="docs" t-as="doc">
+            <t t-call="acs_library_management.bookstore_report" />
+         </t>
+      </t>
+   </template>
+
+   <record id="bookstore_report_action" model="ir.actions.report">
+      <field name="name">Customer Report</field>
+      <field name="model">acs.bookstore</field>
+      <field name="report_type">qweb-pdf</field>
+      <field name="report_name">acs_library_management.acs_bookstore_report</field>
+      <field name="report_file">acs_library_management.acs_bookstore_report</field>
+      <field name="print_report_name">'Order Report - %s' % (object.customer_name.name)</field>
+      <field name="binding_model_id" ref="model_acs_bookstore" />
+      <field name="binding_type">report</field>
+   </record>
+</odoo>

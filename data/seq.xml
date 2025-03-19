@@ -1,0 +1,33 @@
+<odoo>
+    <!-- <record id="seq_book_records" model="ir.sequence">
+        <field name="name">Book</field>
+        <field name="code">acs.book</field>
+        <field name="prefix">B</field>
+        <field name="padding">4</field>
+        <field name="company_id" eval="False" />
+    </record> -->
+
+    <record id="seq_bookstore_records" model="ir.sequence">
+        <field name="name">Bookstore</field>
+        <field name="code">acs.bookstore</field>
+        <field name="prefix">BS</field>
+        <field name="padding">4</field>
+        <field name="company_id" eval="False" />
+    </record>
+
+    <record id="seq_member_records" model="ir.sequence">
+        <field name="name">Member</field>
+        <field name="code">acs.member</field>
+        <field name="prefix">M</field>
+        <field name="padding">4</field>
+        <field name="company_id" eval="False" />
+    </record>
+
+    <record id="seq_staff_records" model="ir.sequence">
+        <field name="name">Staff</field>
+        <field name="code">acs.staff</field>
+        <field name="prefix">S</field>
+        <field name="padding">4</field>
+        <field name="company_id" eval="False" />
+    </record>
+</odoo>

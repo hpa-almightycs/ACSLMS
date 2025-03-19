@@ -1,46 +1,46 @@
 <odoo>
+
+
+    <record id="view_author_form" model="ir.ui.view">
+        <field name="name">res.partner.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='vat']" position="after">
+                <field name="is_author" widget="button_group" />
+            </xpath>
+
+            <xpath expr="//notebook" position="inside">
+                <page string="Details" name="details" invisible="is_author == False">
+                    <group>
+                        <field name="nationality" />
+                        <field name="category" />
+                    </group>
+                </page>
+            </xpath>
+
+        </field>
+    </record>
+
     <record id="view_author_list" model="ir.ui.view">
-        <field name="name">acs.author.list</field>
-        <field name="model">acs.author</field>
+        <field name="name">res.partner.list</field>
+        <field name="model">res.partner</field>
         <field name="arch" type="xml">
             <list>
-                <field name="author_id"/>
-                <field name="name"/>
-                <field name="category"/>
+                <field name="name" />
+                <field name="category" />
             </list>
         </field>
     </record>
 
-    <record id="view_author_form" model="ir.ui.view">
-        <field name="name">acs.author.form</field>
-        <field name="model">acs.author</field>
-        <field name="arch" type="xml">
-            <form>
-                <sheet>
-                    <group>
-                        <field name="author_id"/>
-                        <field name="name"/>
-                        <field name="dob"/>
-                        <field name="nationality"/>
-                        <field name="description"/>
-                        <field name="category"/>
-                    </group>
-                    <group>
-                        <field name="book_ids" widget="one2many_list">
-                            <list>
-                                <field name="name"/>
-                                <field name="publisher"/>
-                            </list>
-                        </field>
-                    </group>
-                </sheet>
-            </form>
-        </field>
-    </record>
 
     <record id="acs_action_author" model="ir.actions.act_window">
-        <field name="name">Author</field>
-        <field name="res_model">acs.author</field>
+        <field name="name">Authors</field>
+        <field name="res_model">res.partner</field>
         <field name="view_mode">list,form</field>
+        <field name="domain">[("is_author","=","true")]</field>
+        <field name="view_id" ref="view_author_list" />
     </record>
+
+
 </odoo>

@@ -1,20 +1,20 @@
 <odoo>
     
     <data>
-        
-        <menuitem id="menu_acs_lms" name="Library Management" sequence="1"/>
-        
-        <menuitem id="menu_acs_author" name="Authors" parent="menu_acs_lms" action="acs_action_author" sequence="10"/>
-        
-        <menuitem id="menu_acs_book" name="Books" parent="menu_acs_lms" action="action_books" sequence="20"/>
 
-        <menuitem id="menu_acs_members" name="Members" parent="menu_acs_lms" action="action_library_member" sequence="30"/>
+        <menuitem id="menu_acs_lms" name="Library Management" sequence="1"/>
+
+
+
+        <menuitem id="menu_acs_members" name="Members" parent="menu_acs_lms" action="action_library_member"  />
+
+        <menuitem id="menu_acs_staff" name="Staff" parent="menu_acs_lms" action="action_staff"  />
+                
+        <menuitem id="menu_acs_author" name="Authors" parent="menu_acs_lms" action="acs_action_author" />
+
+        <menuitem id="menu_acs_bookstore" name="BookStore" parent="menu_acs_lms" action="action_acs_bookstore" />
         
-        <menuitem id="menu_acs_staff" name="Staff" parent="menu_acs_lms" action="action_staff" sequence="14"/>
-  
+
     </data>
 
 </odoo>
-
-
-
